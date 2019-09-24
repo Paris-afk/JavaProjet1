@@ -25,7 +25,7 @@ public class Table {
                 + "    dateNaissaince integer NOT NULL,\n"
                 + "    securiteSocial integer NOT NULL,\n"
                 + "    age integer NOT NULL,\n"
-                + "    taille integer NOT NULL,\n"
+                + "    taille integer NOT NULL,\n"  
                 + "    activitePhysique boolean NOT NULL,\n"
                 + "    HTA boolean  NOT NULL,\n"
                 + "    familialDiabete  NOT NULL,\n"

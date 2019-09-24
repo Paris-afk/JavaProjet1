@@ -21,8 +21,8 @@ public class Main {
         table.createNewTable();
         
        Controller c   = new Controller(m,v);
-      v.setVisible(true);
-      
+     // v.setVisible(true);
+      c.start();
        
     }
         

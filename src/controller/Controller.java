@@ -32,6 +32,7 @@ public class Controller implements ActionListener {
       v.setLocationRelativeTo(null);
         v.setVisible(true); 
         System.out.println("ca a entré");
+        m.StartModel();
       //  v.setSize(650,500);
     }
     
