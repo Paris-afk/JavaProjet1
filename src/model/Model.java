@@ -18,7 +18,15 @@ public class Model {
         LockeUser();
     }
     public void  NewUser(){
-      
+          v.nameTxt.setEnabled(true);
+        v.lastNameTxt.setEnabled(true);
+        v.statureTxt.setEnabled(true);
+        v.yearsTxt.setEnabled(true);
+        v.bodyMassTxt.setEnabled(true);
+        v.newBtn.setEnabled(true);
+        v.cancelBtn.setEnabled(true);
+        v.registerBtn.setEnabled(true);  
+        System.out.println("los botones han sido habilitados");
         
     }
     
@@ -29,8 +37,9 @@ public class Model {
         v.yearsTxt.setEnabled(false);
         v.bodyMassTxt.setEnabled(false);
         v.newBtn.setEnabled(true);
-        v.cancelBtn.setEnabled(true);
-        v.registerBtn.setEnabled(true);  
+        v.cancelBtn.setEnabled(false);
+        v.registerBtn.setEnabled(false);  
+        System.out.println("model has been inicialited");
     }
     
 }

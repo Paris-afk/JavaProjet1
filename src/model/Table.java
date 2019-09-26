@@ -19,7 +19,7 @@ public class Table {
         
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS personne (\n"
-                + "    id integer PRIMARY KEY,\n"
+                + "    id integer PRIMARY KEY AUTOINCREMENT,\n"
                 + "    name text NOT NULL,\n"
                 + "    nom text NOT NULL,\n"
                 + "    dateNaissaince integer NOT NULL,\n"
