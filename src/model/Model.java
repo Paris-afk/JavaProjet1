@@ -49,7 +49,9 @@ public class Model {
         System.out.println("diabete" + diabete);
         System.out.println("glycemie" + glycemie);
         System.out.println("legume" + legume);
+        System.out.println("---------------------------------------------------");
         
+        insertApp.insert(prenom, nom, seguroSocial, fechaNacimiento, stature, anios, masaCorporal, actividadesFisicas, genero, antiHTA, diabete, glycemie, legume);
         
         
         

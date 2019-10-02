@@ -7,6 +7,9 @@ package model;
 
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+import java.util.Date;
 
 /**
  *
@@ -34,15 +37,27 @@ public class InsertApp {
 //        int anios = Integer.parseInt(v.yearsTxt.getText());
 //        int masaCorporal = Integer.parseInt(v.bodyMassTxt.getText());
        
-           public void insert(String name, String nom) {
-        String sql = "INSERT INTO Coucou(id,name,nom) VALUES(NULL,?,?)";
- 
+           public void insert(String prenom, String nom, int seguroSocial , String fechaNacimiento, int stature , int anios , int masaCorporal, boolean actividadesFisicas, boolean  genero , boolean antiHTA, boolean diabete, boolean glycemie , int legume) {
+        String sql = "INSERT INTO Coucou(id,name,nom, numeroSocial,fechaNacimiento,talla,edad,masaCorporal,actividadesFisicas,genero,antiHTA,diabetes,glycemia,legume) VALUES(NULL,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+//            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+//            Date date =formatter.parse(fechaNacimiento);
         try (Connection conn = this.Connnect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
             
             //pstmt.setInt(1, id);
-            pstmt.setString(1, name);
+            pstmt.setString(1, prenom);
             pstmt.setString(2,nom);
+            pstmt.setInt(3, anios);
+            pstmt.setString(4, fechaNacimiento);
+            pstmt.setInt(5, stature);
+            pstmt.setInt(6, anios);
+            pstmt.setInt(7, masaCorporal);
+            pstmt.setBoolean(8, actividadesFisicas);
+            pstmt.setBoolean(9, genero);
+            pstmt.setBoolean(10, antiHTA);
+            pstmt.setBoolean(11, diabete);
+            pstmt.setBoolean(12, glycemie);
+            pstmt.setInt(13, legume);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
