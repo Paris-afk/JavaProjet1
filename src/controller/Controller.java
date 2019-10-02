@@ -30,6 +30,7 @@ public class Controller implements ActionListener {
         this.v =v;
        this.v.newBtn.addActionListener(this);
        this.v.cancelBtn.addActionListener(this);
+       this.v.registerBtn.addActionListener(this);
        this.v.masculinBtn.addActionListener(this);
        this.v.feminanBtn.addActionListener(this);
        this.v.activitesphysiquesOuiBtn.addActionListener(this);
@@ -71,6 +72,15 @@ public class Controller implements ActionListener {
                 
             }
         }
+                
+         if(v.registerBtn == e.getSource()){
+             try{
+                 System.out.println("Boton registrar ha sido presionado");
+                 m.InsertarUsuarios(actividadesFisicas, genero, antiHTA, diabete, glycemie, legume);
+             }catch(Exception ex){
+                 JOptionPane.showMessageDialog(null, ex.toString());
+             }
+         }
   //-----------------------------GENRE              
                 if(v.masculinBtn.isSelected()){
                    // System.out.println("Masculino");

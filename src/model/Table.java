@@ -18,22 +18,23 @@ public class Table {
         String url = "jdbc:sqlite:C://sqlite/db/tests.db";
         
         // SQL statement for creating a new table
-        String sql = "CREATE TABLE IF NOT EXISTS personne (\n"
+        String sql = "CREATE TABLE IF NOT EXISTS Coucou (\n"
                 + "    id integer PRIMARY KEY AUTOINCREMENT,\n"
-                + "    name text NOT NULL,\n"
-                + "    nom text NOT NULL,\n"
-                + "    dateNaissaince integer NOT NULL,\n"
-                + "    securiteSocial integer NOT NULL,\n"
-                + "    age integer NOT NULL,\n"
-                + "    taille integer NOT NULL,\n"  
-                + "    activitePhysique boolean NOT NULL,\n"
-                + "    HTA boolean  NOT NULL,\n"
-                + "    familialDiabete  NOT NULL,\n"
-                + "    masseCorporelle int  NOT NULL,\n"
-                + "    legumes boolean  NOT NULL,\n"
-                + "    glycemie boolean  NOT NULL \n"
+                + "    name text ,\n"
+                 + "    numeroSocial int ,\n"
+                + "    talla int ,\n"
+                + "    edad int ,\n"
+                + "    masaCorporal int ,\n"
+                 + "    fechaNacimiento date ,\n"
+                + "    actividadesFisicas boolean ,\n"
+                + "    genero boolean ,\n"
+                + "    antiHTA boolean ,\n"
+                + "    diabetes boolean ,\n"
+                + "    glycemia boolean ,\n"
+                + "    legume int ,\n"
+                + "    nom text "
                 + ");";
-        
+  
         try (Connection conn = DriverManager.getConnection(url);
                 Statement stmt = conn.createStatement()) {
             // create a new table

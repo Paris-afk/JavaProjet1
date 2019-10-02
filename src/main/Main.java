@@ -26,10 +26,12 @@ public class Main {
         Table table = new Table();
         con.connect();
         table.createNewTable();
-        
+        InsertApp app = new InsertApp();
        Controller c   = new Controller(m,v);
      // v.setVisible(true);
       c.start();
+//      app.insert("Nuevo1", "Stark");
+//      app.insert("Nuevo2", "Rogers");
     
        
     }
