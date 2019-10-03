@@ -10,6 +10,7 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -59,8 +60,9 @@ public class InsertApp {
             pstmt.setBoolean(12, glycemie);
             pstmt.setInt(13, legume);
             pstmt.executeUpdate();
+            JOptionPane.showMessageDialog( null, "insertion réussie !");
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+                JOptionPane.showMessageDialog(null, "l'insertion n'a pas reussi");
         }
     }
 }

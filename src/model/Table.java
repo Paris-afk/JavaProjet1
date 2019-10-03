@@ -25,7 +25,7 @@ public class Table {
                 + "    talla int ,\n"
                 + "    edad int ,\n"
                 + "    masaCorporal int ,\n"
-                 + "    fechaNacimiento date ,\n"
+                 + "    fechaNacimiento text ,\n"
                 + "    actividadesFisicas boolean ,\n"
                 + "    genero boolean ,\n"
                 + "    antiHTA boolean ,\n"

@@ -25,6 +25,12 @@ public class Controller implements ActionListener {
    static boolean diabete;
    static boolean glycemie;
    static int legume;
+   static int Vgenero=0;
+   static int VactividadesFisicas=0;
+   static int VantiHTA=0;
+   static int Vdiabetes=0;
+   static int Vglucemia=0;
+   static int Vlegume=0;
     public Controller( Model m , View v) {
         this.m = m;
         this.v =v;
@@ -74,23 +80,30 @@ public class Controller implements ActionListener {
         }
                 
          if(v.registerBtn == e.getSource()){
+             if(Vgenero==0 || VactividadesFisicas ==0 || VantiHTA ==0|| Vdiabetes==0|| Vglucemia==0||Vlegume==0){
+                     JOptionPane.showMessageDialog(null, "il y a des champs non validés");
+                 }else{
              try{
+                 
                  System.out.println("Boton registrar ha sido presionado");
                  m.InsertarUsuarios(actividadesFisicas, genero, antiHTA, diabete, glycemie, legume);
              }catch(Exception ex){
-                 JOptionPane.showMessageDialog(null, ex.toString());
+                 JOptionPane.showMessageDialog(null, "il y a des champs non validés");
              }
+         }
          }
   //-----------------------------GENRE              
                 if(v.masculinBtn.isSelected()){
                    // System.out.println("Masculino");
                     genero = true;
                     System.out.println("Genero=" + genero);
+                    Vgenero +=1;
                     
                 } if (v.feminanBtn.isSelected()){
                     //System.out.println("Feminan");
                     genero = false;
                     System.out.println("Genero=" + genero);
+                        Vgenero +=1;
                 }
     //-----------------------------------------
     
@@ -98,10 +111,12 @@ public class Controller implements ActionListener {
                 if(v.activitesphysiquesOuiBtn.isSelected()){
                    // System.out.println("activitesPhysiquesOui");
                     actividadesFisicas = true;
+                    VactividadesFisicas +=1;
                     System.out.println("actividadesFisicas =" +actividadesFisicas);
                 } if(v.activitesphysiquesNonBtn.isSelected()){
                     //System.out.println("activites Physiques Non");
                     actividadesFisicas = false;
+                    VactividadesFisicas +=1;
                      System.out.println("actividadesFisicas =" +actividadesFisicas);
                 }
                 
@@ -111,8 +126,9 @@ public class Controller implements ActionListener {
                   if(v.antiHTAOuiBtn.isSelected()){
                     antiHTA = true;
                     System.out.println("antiHTA=" + antiHTA);
+                    VantiHTA +=1;
                 } if(v.antiHTANonBtn.isSelected()){
-                  
+                  VantiHTA +=1;
                     antiHTA = false;
                     System.out.println("antiHTA=" + antiHTA);
                 }
@@ -121,9 +137,11 @@ public class Controller implements ActionListener {
        
                 if(v.diabeteOuiBtn.isSelected()){
                     diabete=true;
+                    Vdiabetes +=1;
                     System.out.println("diabete="+diabete);
                 }else if(v.diabeteNonBtn.isSelected()){
                     diabete=false;
+                    Vdiabetes +=1;
                     System.out.println("diabete="+diabete);
                 }
         //--------------------------------------------------------
@@ -131,9 +149,11 @@ public class Controller implements ActionListener {
         //---------------------------------------------Glycemie
                 if(v.glycemieOuiBtn.isSelected()){
                     glycemie=true;
+                    Vglucemia +=1;
                     System.out.println("grlycemie="+glycemie);
                 }else if(v.glycemieNonBtn.isSelected()){
                     glycemie= false;
+                    Vglucemia +=1;
                     System.out.println("glycemie="+glycemie);
                 }
        
@@ -143,12 +163,15 @@ public class Controller implements ActionListener {
      
                 if(v.legumeOuiBtn.isSelected()){
                     legume=3;
+                    Vlegume +=1;
                     System.out.println("legume="+legume);
                 }else if(v.legumePasBtn.isSelected()){
                     legume =2;
+                       Vlegume +=1;
                     System.out.println("legume="+legume);
                 }else if(v.legumeNonBtn.isSelected()){
                     legume=1;
+                       Vlegume +=1;
                     System.out.println("legume="+legume);
                 }
     }
