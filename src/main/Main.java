@@ -10,6 +10,7 @@ import javax.swing.UIManager;
 import model.*;
 import view.View;
 import controller.*;
+import view.Consulta;
 public class Main {
 
     public static void main(String[] args) {
@@ -24,10 +25,11 @@ public class Main {
         View v = new View();
         Conn con = new Conn();
         Table table = new Table();
+        Consulta consulta = new Consulta();
         con.connect();
         table.createNewTable();
         InsertApp app = new InsertApp();
-       Controller c   = new Controller(m,v);
+       Controller c   = new Controller(m,v,consulta);
      // v.setVisible(true);
       c.start();
 //      app.insert("Nuevo1", "Stark");

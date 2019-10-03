@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import view.Consulta;
 import view.View;
 
 /**
@@ -20,10 +21,10 @@ public class Model {
 
     View v = new View();
     InsertApp insertApp = new InsertApp();
-
+   
     public void StartModel() {
         LockeUser();
-
+      insertApp.MostrarUsuarios();
     }
 
     public void InsertarUsuarios(boolean actividadesFisicas, boolean genero, boolean antiHTA, boolean diabete, boolean glycemie, int legume) {
