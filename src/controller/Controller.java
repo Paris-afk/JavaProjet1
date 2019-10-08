@@ -84,8 +84,14 @@ public class Controller implements ActionListener {
         }
 
         if (v.registerBtn == e.getSource()) {
-            if (Vgenero == 0 || VactividadesFisicas == 0 || VantiHTA == 0 || Vdiabetes == 0 || Vglucemia == 0 || Vlegume == 0) {
+            if ( Vglucemia == 0 || Vlegume == 0 ||Vgenero == 0 || VactividadesFisicas == 0 || VantiHTA == 0 || Vdiabetes == 0 ) {
                 JOptionPane.showMessageDialog(null, "il y a des champs non validés");
+                System.out.println(Vgenero);
+                System.out.println(VactividadesFisicas);
+                System.out.println(VantiHTA);
+                System.out.println(Vdiabetes);
+                System.out.println(Vglucemia);
+                System.out.println(Vlegume);
             } else {
                 try {
 
@@ -95,6 +101,33 @@ public class Controller implements ActionListener {
                     JOptionPane.showMessageDialog(null, "il y a des champs non validés");
                 }
             }
+        }
+        
+        //---------------------------------------------Glycemie
+        if (v.glycemieOuiBtn.isSelected()) {
+            glycemie = true;
+            Vglucemia =1;
+            System.out.println("grlycemie=" + glycemie);
+        }  if (v.glycemieNonBtn.isSelected()) {
+            glycemie = false;
+            Vglucemia =1;
+            System.out.println("glycemie=" + glycemie);
+        }
+
+        //------------------------------------------------------
+        //------------------------------------------Legueme
+        if (v.legumeOuiBtn.isSelected()) {
+            legume = 3;
+            Vlegume =1;
+            System.out.println("legume=" + legume);
+        }  if (v.legumePasBtn.isSelected()) {
+            legume = 2;
+            Vlegume=1;
+            System.out.println("legume=" + legume);
+        } if (v.legumeNonBtn.isSelected()) {
+            legume = 1;
+            Vlegume =1;
+            System.out.println("legume=" + legume);
         }
         //-----------------------------GENRE              
         if (v.masculinBtn.isSelected()) {
@@ -151,32 +184,6 @@ public class Controller implements ActionListener {
         }
         //--------------------------------------------------------
 
-        //---------------------------------------------Glycemie
-        if (v.glycemieOuiBtn.isSelected()) {
-            glycemie = true;
-            Vglucemia += 1;
-            System.out.println("grlycemie=" + glycemie);
-        } else if (v.glycemieNonBtn.isSelected()) {
-            glycemie = false;
-            Vglucemia += 1;
-            System.out.println("glycemie=" + glycemie);
-        }
-
-        //------------------------------------------------------
-        //------------------------------------------Legueme
-        if (v.legumeOuiBtn.isSelected()) {
-            legume = 3;
-            Vlegume += 1;
-            System.out.println("legume=" + legume);
-        } else if (v.legumePasBtn.isSelected()) {
-            legume = 2;
-            Vlegume += 1;
-            System.out.println("legume=" + legume);
-        } else if (v.legumeNonBtn.isSelected()) {
-            legume = 1;
-            Vlegume += 1;
-            System.out.println("legume=" + legume);
-        }
 
       if (v.registrosBtn == e.getSource()) {
             try {

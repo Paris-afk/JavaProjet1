@@ -20,7 +20,7 @@ import view.*;
 public class InsertApp {
 
     Consulta consulta = new Consulta();
-    int numeroSocial, taille, masseCorporelle, contateur, age, alimentation;
+  public static  int numeroSocial, taille, masseCorporelle, contateur, age, alimentation;
     boolean genre, activitésPhisiques, traitementHTA, diabète, glicémie;
 
     private Connection Connnect() {
@@ -65,23 +65,23 @@ public class InsertApp {
 
     public void leguemes(int leguemes) {
         //aqui iran las codiciones para las leguemes
-
+        
         //non
         if (alimentation == 1) {
             contador(2);
         }
         //tous les jours
         if (alimentation == 2) {
-            contador(0);
+            contador(1);
         }
         //pas tous les jours
         if (alimentation == 3) {
-            contador(1);
+            contador(0);
         }
     }
 
     public void masseCorporelle() {
-        if (masseCorporelle > 24 && masseCorporelle < 30) {
+        if (masseCorporelle > 24 && masseCorporelle < 31) {
             contador(1);
         } else if (masseCorporelle > 30) {
             contador(3);
@@ -110,8 +110,8 @@ public class InsertApp {
 
     public void taille(int taille) {
         //true == feminan
-        if (this.genre == false) {
-            if (this.taille < 94) {
+        if (genre == true) {
+            if (taille < 94) {
                 contador(0);
             } else if (this.taille > 94 && this.taille < 102) {
                 contador(3);
@@ -120,7 +120,7 @@ public class InsertApp {
             }
             //---------------------------------------
         }
-        if (this.genre == true) {
+        if (this.genre == false) {
             if (this.taille < 80) {
                 contador(0);
             } else if (this.taille > 80 && this.taille < 88) {
@@ -135,16 +135,40 @@ public class InsertApp {
         if (age < 45) {
             contador(0);
         }
-        if (age < 54) {
+        if (age > 45 && age <55) {
             contador(2);
         }
-        if (age < 65) {
+        if (age >54 && age <65) {
             contador(3);
         }
-        if (age > 65) {
+        if (age > 64) {
             contador(4);
         }
 
+    }
+    
+    public String  mostrarMensaje(){
+     String mensaje = "";
+     
+     if(contateur ==7){
+         mensaje = "risque faible (= 1 %)";
+     }
+     if(contateur >7 && contateur < 12){
+         mensaje = "risque légèrement élevé (= 4 %)";
+     }
+     
+     if (contateur >12 && contateur <15){
+         mensaje = "risque modéré (= 17%)";
+     }
+     
+     if(contateur >14 && contateur <21){
+         mensaje = "risque élevé  ( = 33%) ";
+     }
+     
+     if(contateur >20){
+         mensaje ="risque très élevé  ( = 50%)";
+     }
+     return mensaje;
     }
 
     public void insert(String prenom, String nom, int seguroSocial, String fechaNacimiento, int stature, int anios, int masaCorporal, boolean actividadesFisicas, boolean genero, boolean antiHTA, boolean diabete, boolean glycemie, int legume) {
@@ -157,7 +181,7 @@ public class InsertApp {
             //pstmt.setInt(1, id);
             pstmt.setString(1, prenom);
             pstmt.setString(2, nom);
-            pstmt.setInt(3, anios);
+            pstmt.setInt(3, seguroSocial);
             pstmt.setString(4, fechaNacimiento);
             pstmt.setInt(5, stature);
             pstmt.setInt(6, anios);
@@ -174,6 +198,8 @@ public class InsertApp {
             JOptionPane.showMessageDialog(null, "l'insertion n'a pas reussi");
         }
     }
+    
+ 
 
     public void MostrarUsuarios() {
         DefaultTableModel modo = new DefaultTableModel();
@@ -190,6 +216,7 @@ public class InsertApp {
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
+                contateur =0;
                 datos[0] = rs.getString("name");
                 datos[1] = rs.getString("nom");
                 datos[2] = rs.getString("fechaNacimiento");
@@ -217,9 +244,11 @@ public class InsertApp {
                 dato1 += 1;
                 // datos[4] = Integer.toString(dato1);
                 //datos[4] = algoritmo(0);
-                datos[4] = Integer.toString(contateur);
-                System.out.println(dato1);
+              //  datos[4] = Integer.toString(contateur);
+              datos[4] = mostrarMensaje();
+               // System.out.println(dato1);
                 modo.addRow(datos);
+                System.out.println(contateur);
             }
             // System.out.println(rs.getString(1));
             consulta.Tabla.setModel(modo);
