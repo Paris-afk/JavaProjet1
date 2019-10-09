@@ -578,4 +578,5 @@ public class View extends javax.swing.JFrame {
     public static javax.swing.JTextField statureTxt;
     public static javax.swing.JTextField yearsTxt;
     // End of variables declaration//GEN-END:variables
+   public static javax.swing.ButtonGroup buttonGroupGenero;
 }

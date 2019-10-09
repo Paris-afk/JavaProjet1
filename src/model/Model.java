@@ -20,11 +20,11 @@ import view.View;
 public class Model {
 
     View v = new View();
-    InsertApp insertApp = new InsertApp();
-   
+    public InsertApp insertApp = new InsertApp();
+
     public void StartModel() {
         LockeUser();
-      insertApp.MostrarUsuarios();
+        insertApp.MostrarUsuarios("");
     }
 
     public void InsertarUsuarios(boolean actividadesFisicas, boolean genero, boolean antiHTA, boolean diabete, boolean glycemie, int legume) {
@@ -56,6 +56,7 @@ public class Model {
             JOptionPane.showMessageDialog(null, "hay campos vacios");
         } else {
             insertApp.insert(prenom, nom, seguroSocial, fechaNacimiento, stature, anios, masaCorporal, actividadesFisicas, genero, antiHTA, diabete, glycemie, legume);
+             Limpiar();
         }
 
         //    insertApp.insert(1, "nombre", "apellido");
@@ -114,6 +115,21 @@ public class Model {
         v.masculinBtn.setEnabled(false);
         v.feminanBtn.setEnabled(false);
         System.out.println("model has been inicialited");
+    }
+
+    public void Limpiar() {
+        v.nameTxt.setText("");
+        v.lastNameTxt.setText("");
+        v.statureTxt.setText("");
+        v.yearsTxt.setText("");
+        v.masculinBtn.setSelected(false);
+        v.feminanBtn.setSelected(false);
+       // v.buttonGroupGenero.clearSelection();
+        v.seguroSocialTxt.setText("");
+        v.fechaNacimientoTxt.setText("");
+        v.bodyMassTxt.setText("");
+
+        //v.buttonGroup2.clearSelection();
     }
 
 }

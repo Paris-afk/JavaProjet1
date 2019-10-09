@@ -201,7 +201,7 @@ public class InsertApp {
     
  
 
-    public void MostrarUsuarios() {
+    public void MostrarUsuarios(String elemento) {
         DefaultTableModel modo = new DefaultTableModel();
         modo.addColumn("Nom");
         modo.addColumn("Prenom");
@@ -209,7 +209,13 @@ public class InsertApp {
         modo.addColumn("Numero sécurité social");
         modo.addColumn("");
         consulta.Tabla.setModel(modo);
-        String sql = "SELECT * FROM Coucou";
+        String sql = "";
+        
+        if(elemento.equals("")){
+            sql= "SELECT * FROM Coucou";
+        }else{
+            sql = "SELECT * FROM Coucou WHERE name like'%"+elemento+"%'";
+        }
 
         String datos[] = new String[5];
         try (Connection conn = this.Connnect();

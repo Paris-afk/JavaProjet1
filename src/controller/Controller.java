@@ -21,6 +21,7 @@ public class Controller implements ActionListener {
     private Model m;
     private View v;
     private Consulta c = new Consulta();
+    
     static boolean actividadesFisicas;
     static boolean genero;
     static boolean antiHTA;
@@ -49,6 +50,8 @@ public class Controller implements ActionListener {
         this.v.diabeteOuiBtn.addActionListener(this);
         this.v.diabeteNonBtn.addActionListener(this);
         this.v.registrosBtn.addActionListener(this);
+        this.c.refrescarBtn.addActionListener(this);
+        this.c.buscarBtn.addActionListener(this);
     }
 
     public void start() {
@@ -78,6 +81,7 @@ public class Controller implements ActionListener {
             try {
                 System.out.println("ha sido presionado");
                 m.LockeUser();
+                m.Limpiar();
             } catch (Exception ex) {
 
             }
@@ -97,6 +101,7 @@ public class Controller implements ActionListener {
 
                     System.out.println("Boton registrar ha sido presionado");
                     m.InsertarUsuarios(actividadesFisicas, genero, antiHTA, diabete, glycemie, legume);
+                   
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "il y a des champs non validés");
                 }
@@ -190,6 +195,23 @@ public class Controller implements ActionListener {
                 System.out.println("Todo bien hasta ahora");
                 
                 c.setVisible(true);
+                  m.insertApp.MostrarUsuarios("");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.toString());
+            }
+        }
+            if (c.refrescarBtn == e.getSource()) {
+            try {
+             m.insertApp.MostrarUsuarios("");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.toString());
+            }
+        }
+                  if (c.buscarBtn == e.getSource()) {
+            try {
+                     m.insertApp.MostrarUsuarios(c.buscarTxt.getText());
+              // i.MostrarUsuarios(c.buscarTxt.getText());
+              //  System.out.println(c.buscarTxt.getText());
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex.toString());
             }
